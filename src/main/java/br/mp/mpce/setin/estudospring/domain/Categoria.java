@@ -2,9 +2,20 @@ package br.mp.mpce.setin.estudospring.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+@Entity
 public class Categoria implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_id_categoria_gen")
+	@SequenceGenerator(name = "seq_id_categoria_gen", sequenceName = "seq_id_categoria")
 	private Integer id;
 	private String nome;
 	
