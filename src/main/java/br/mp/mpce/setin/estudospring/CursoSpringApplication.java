@@ -8,8 +8,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import br.mp.mpce.setin.estudospring.domain.Categoria;
+import br.mp.mpce.setin.estudospring.domain.Cidade;
+import br.mp.mpce.setin.estudospring.domain.Estado;
 import br.mp.mpce.setin.estudospring.domain.Produto;
 import br.mp.mpce.setin.estudospring.repositories.CategoriaRepository;
+import br.mp.mpce.setin.estudospring.repositories.CidadeRepository;
+import br.mp.mpce.setin.estudospring.repositories.EstadoRepository;
 import br.mp.mpce.setin.estudospring.repositories.ProdutoRepository;
 
 @SpringBootApplication
@@ -19,6 +23,10 @@ public class CursoSpringApplication implements CommandLineRunner{
 	private CategoriaRepository catRepo;
 	@Autowired
 	private ProdutoRepository prodRepo;
+	@Autowired
+	private CidadeRepository cidRepo;
+	@Autowired
+	private EstadoRepository estRepo;
 	
 	
 	public static void main(String[] args) {
@@ -27,11 +35,14 @@ public class CursoSpringApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		
+		//CATEGORIAS 
 		Categoria cat1 = new Categoria(null,"Informatica");
 		Categoria cat2 = new Categoria(null,"Sex Shop");
 		Categoria cat3 = new Categoria(null,"Brinquedos");
 		Categoria cat4 = new Categoria(null,"oneandninethynine");
 		
+		//PRODUTOS
 		Produto p1 = new Produto(null , "Computador" , 2000.00);
 		Produto p2 = new Produto(null ,"Máquina de Escrever" , 2000.00);
 		Produto p3 = new Produto(null , "Lápis" , 2000.00);
@@ -45,8 +56,40 @@ public class CursoSpringApplication implements CommandLineRunner{
 		cat1.getProdutos().addAll(Arrays.asList(p1,p2,p3,p4,p5,p6,p7));
 		cat2.getProdutos().addAll(Arrays.asList(p1,p2,p3,p4,p5,p6,p7));
 		
+		
+		
 		catRepo.saveAll(Arrays.asList(cat1,cat2,cat3,cat4));
 		prodRepo.saveAll(Arrays.asList(p1,p2,p3,p4,p5,p6,p7));
+		
+		
+		//ESTADOS E CIDADES
+				Estado est1 = new Estado(null, "Ceará");
+				Estado est2 = new Estado(null, "Paraiba");
+				Estado est3 = new Estado(null, "Piaui");
+				Estado est4 = new Estado(null, "Pernambuco");
+				Estado est5 = new Estado(null, "Goiás");
+				Estado est6 = new Estado(null, "Maranhão");
+				Estado est7 = new Estado(null, "Bahia");
+				Estado est8 = new Estado(null, "Sergipe");
+				Estado est9 = new Estado(null, "Alagoas");
+				Estado est10 = new Estado(null, "Rio Grande do Norte");
+				Estado est11 = new Estado(null, "Rio de Janeiro");
+				Estado est12 = new Estado(null, "São Paulo");
+				Estado est13 = new Estado(null, "Paraná");
+				Estado est14 = new Estado(null, "Distrito Federal");
+				Estado est15 = new Estado(null, "Mato Grosso");
+				Estado est16 = new Estado(null, "Santa Catarina");
+				Estado est17 = new Estado(null, "Amazonas");
+				Estado est18 = new Estado(null, "Amapá");
+				
+				Cidade cid1 = new Cidade(null, "Fortaleza", est1);
+				Cidade cid2 = new Cidade(null, "Caucaia",   est1);
+				Cidade cid3 = new Cidade(null, "Maracanaú", est1);
+				Cidade cid4 = new Cidade(null, "Juazeiro",  est1);
+				Cidade cid5 = new Cidade(null, "Crato",     est1);
+				
+				estRepo.saveAll(Arrays.asList(est1,est2,est3,est4,est5,est6,est7,est8,est9,est10,est11,est12,est13,est14,est15,est16,est17,est18));
+				cidRepo.saveAll(Arrays.asList(cid2,cid3,cid4,cid5));
 	}
 	
 	
