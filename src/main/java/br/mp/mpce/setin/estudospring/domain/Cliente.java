@@ -34,7 +34,7 @@ public class Cliente implements Serializable {
 	private List<Endereco> enderecos;
 
 	@ElementCollection
-	@CollectionTable(name="telefone")
+	@CollectionTable(name="telefones_cliente")
 	private Set<String> telefones = new HashSet<>();
 
 	public Cliente() {

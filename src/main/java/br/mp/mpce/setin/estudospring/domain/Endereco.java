@@ -33,6 +33,10 @@ public class Endereco implements Serializable {
 	@JoinColumn(name="cidade_id")
 	private Cidade cidade;
 
+	
+	
+	
+	
 	private Endereco() {
 
 	}
