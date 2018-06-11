@@ -1,6 +1,7 @@
 package br.mp.mpce.setin.estudospring.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,11 +15,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import br.mp.mpce.setin.estudospring.domain.enums.TipoCliente;
 
 @Entity
 public class Cliente implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -30,12 +32,16 @@ public class Cliente implements Serializable {
 	private String cpfOuCnpj;
 	private Integer tipoCliente;
 
+	@JsonManagedReference
 	@OneToMany(mappedBy="cliente")
 	private List<Endereco> enderecos;
 
 	@ElementCollection
 	@CollectionTable(name="telefones_cliente")
 	private Set<String> telefones = new HashSet<>();
+	
+	@OneToMany(mappedBy="cliente")
+	private List<Pedido> pedidos = new ArrayList<>();
 
 	public Cliente() {
 
@@ -105,6 +111,14 @@ public class Cliente implements Serializable {
 	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
 	}
+	
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
 
 	@Override
 	public int hashCode() {
@@ -136,5 +150,7 @@ public class Cliente implements Serializable {
 		return "Cliente [id=" + id + ", nome=" + nome + ", email=" + email + ", cpfOuCnpj=" + cpfOuCnpj
 				+ ", tipoCliente=" + tipoCliente + ", enderecos=" + enderecos + ", telefones=" + telefones + "]";
 	}
+
+	
 
 }
