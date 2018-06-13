@@ -15,8 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.mp.mpce.setin.estudospring.domain.enums.TipoCliente;
 
@@ -33,16 +32,15 @@ public class Cliente implements Serializable {
 	private String cpfOuCnpj;
 	private Integer tipoCliente;
 
-	@JsonManagedReference
-	@OneToMany(mappedBy="cliente")
+	@OneToMany(mappedBy = "cliente")
 	private List<Endereco> enderecos;
 
 	@ElementCollection
-	@CollectionTable(name="telefones_cliente")
+	@CollectionTable(name = "telefones_cliente")
 	private Set<String> telefones = new HashSet<>();
-	
-	@JsonBackReference
-	@OneToMany(mappedBy="cliente")
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "cliente")
 	private List<Pedido> pedidos = new ArrayList<>();
 
 	public Cliente() {
@@ -113,7 +111,7 @@ public class Cliente implements Serializable {
 	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
 	}
-	
+
 	public List<Pedido> getPedidos() {
 		return pedidos;
 	}
@@ -152,7 +150,5 @@ public class Cliente implements Serializable {
 		return "Cliente [id=" + id + ", nome=" + nome + ", email=" + email + ", cpfOuCnpj=" + cpfOuCnpj
 				+ ", tipoCliente=" + tipoCliente + ", enderecos=" + enderecos + ", telefones=" + telefones + "]";
 	}
-
-	
 
 }
