@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class ItemPedido implements Serializable {
 
@@ -18,9 +20,11 @@ public class ItemPedido implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_id_item_pedido_gen")
 	@SequenceGenerator(name = "seq_id_item_pedido_gen", sequenceName = "seq_id_item_pedido")
 	private Integer id;
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="pedido_id")
 	private Pedido pedido;
+	
 	@ManyToOne
 	@JoinColumn(name="produto_id")
 	private Produto produto;

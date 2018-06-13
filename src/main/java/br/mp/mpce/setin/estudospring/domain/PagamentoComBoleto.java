@@ -4,20 +4,25 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import br.mp.mpce.setin.estudospring.domain.enums.EstadoPagamento;
 
 @Entity
-public class PagamentoComBoleto extends Pagamento{
-	
+public class PagamentoComBoleto extends Pagamento {
+
 	private static final long serialVersionUID = 1L;
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date dataVecimento;
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date dataPagamento;
-	
+
 	public PagamentoComBoleto() {
-		
+
 	}
 
-	public PagamentoComBoleto(Integer id, EstadoPagamento estadoPagamento, Pedido pedido,Date dataVecimento,Date dataPagamento) {
+	public PagamentoComBoleto(Integer id, EstadoPagamento estadoPagamento, Pedido pedido, Date dataVecimento,
+			Date dataPagamento) {
 		super(id, estadoPagamento, pedido);
 		this.setDataVecimento(dataVecimento);
 		this.setDataPagamento(dataPagamento);
@@ -38,7 +43,5 @@ public class PagamentoComBoleto extends Pagamento{
 	public void setDataPagamento(Date dataPagamento) {
 		this.dataPagamento = dataPagamento;
 	}
-	
-	
 
 }
