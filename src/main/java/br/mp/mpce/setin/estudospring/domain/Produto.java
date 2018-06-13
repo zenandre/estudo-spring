@@ -2,7 +2,9 @@ package br.mp.mpce.setin.estudospring.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -27,6 +30,8 @@ public class Produto implements Serializable {
 	private Integer id;
 	private String nome;
 	private Double preco;
+	@OneToMany(mappedBy="produto")
+	private Set<ItemPedido> itens = new HashSet<>();
 	
 	@JsonBackReference
 	@ManyToMany
@@ -47,6 +52,14 @@ public class Produto implements Serializable {
 		this.preco = preco;
 	}
 
+	public List<Pedido> getPedidos(){
+		List<Pedido> lista = new ArrayList<>();
+		for (ItemPedido item: itens) {
+			lista.add(item.getPedido());
+		}
+		return lista;
+	}
+	
 	public List<Categoria> getCategorias() {
 		return categorias;
 	}
@@ -106,6 +119,14 @@ public class Produto implements Serializable {
 	@Override
 	public String toString() {
 		return "Produto [id=" + id + ", nome=" + nome + ", preco=" + preco + "]";
+	}
+
+	public Set<ItemPedido> getItens() {
+		return itens;
+	}
+
+	public void setItens(Set<ItemPedido> itens) {
+		this.itens = itens;
 	}
 	
 	
