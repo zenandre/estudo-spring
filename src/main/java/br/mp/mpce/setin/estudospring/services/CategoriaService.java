@@ -1,11 +1,16 @@
 package br.mp.mpce.setin.estudospring.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import br.mp.mpce.setin.estudospring.domain.Categoria;
+import br.mp.mpce.setin.estudospring.dto.CategoriaDTO;
 import br.mp.mpce.setin.estudospring.repositories.CategoriaRepository;
 import br.mp.mpce.setin.estudospring.services.exceptions.ConstraintException;
 import br.mp.mpce.setin.estudospring.services.exceptions.ObjectNotFoundException;
@@ -41,5 +46,19 @@ public class CategoriaService {
 			throw new ConstraintException("Não é possivel excluir uma categoria com produto vinculado");
 		}
 
+	}
+	
+	public List<Categoria> findAll() {
+		return reporitory.findAll();
+	}
+	
+	
+	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String direction, String orderby){
+		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderby);
+		return reporitory.findAll(pageRequest);
+	}
+	
+	public Categoria fromDTO(CategoriaDTO obj) {
+		return new Categoria(obj.getId(),obj.getNome());
 	}
 }

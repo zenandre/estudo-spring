@@ -49,6 +49,26 @@ public class CursoSpringApplication implements CommandLineRunner{
 		Categoria cat2 = new Categoria(null,"Sex Shop");
 		Categoria cat3 = new Categoria(null,"Brinquedos");
 		Categoria cat4 = new Categoria(null,"oneandninethynine");
+		Categoria cat5 = new Categoria(null,"oneandninethynine");
+		Categoria cat6 = new Categoria(null,"oneandninethynine");
+		Categoria cat7 = new Categoria(null,"oneandninethynine");
+		Categoria cat8 = new Categoria(null,"oneandninethynine");
+		Categoria cat9 = new Categoria(null,"oneandninethynine");
+		Categoria cat10 = new Categoria(null,"oneandninethynine");
+		Categoria cat11 = new Categoria(null,"oneandninethynine");
+		Categoria cat12 = new Categoria(null,"oneandninethynine");
+		Categoria cat13 = new Categoria(null,"oneandninethynine");
+		Categoria cat14 = new Categoria(null,"oneandninethynine");
+		Categoria cat15 = new Categoria(null,"oneandninethynine");
+		Categoria cat16 = new Categoria(null,"oneandninethynine");
+		Categoria cat17 = new Categoria(null,"oneandninethynine");
+		Categoria cat18= new Categoria(null,"oneandninethynine");
+		Categoria cat19 = new Categoria(null,"oneandninethynine");
+		Categoria cat20 = new Categoria(null,"oneandninethynine");
+		Categoria cat21 = new Categoria(null,"oneandninethynine");
+
+		
+
 		
 		//PRODUTOS
 		Produto p1 = new Produto(null , "Computador" , 2000.00);
@@ -66,7 +86,7 @@ public class CursoSpringApplication implements CommandLineRunner{
 		
 		
 		
-		catRepo.saveAll(Arrays.asList(cat1,cat2,cat3,cat4));
+		catRepo.saveAll(Arrays.asList(cat1,cat2,cat3,cat4,cat5,cat6,cat7,cat8,cat9,cat10,cat11,cat12,cat13,cat14,cat15,cat16,cat17,cat18,cat19,cat20,cat21));
 		prodRepo.saveAll(Arrays.asList(p1,p2,p3,p4,p5,p6,p7));
 		
 		
