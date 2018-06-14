@@ -10,7 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import br.mp.mpce.setin.estudospring.domain.Categoria;
 import br.mp.mpce.setin.estudospring.domain.Cidade;
 import br.mp.mpce.setin.estudospring.domain.Cliente;
-import br.mp.mpce.setin.estudospring.domain.Endereco;
 import br.mp.mpce.setin.estudospring.domain.Estado;
 import br.mp.mpce.setin.estudospring.domain.Produto;
 import br.mp.mpce.setin.estudospring.domain.enums.TipoCliente;
