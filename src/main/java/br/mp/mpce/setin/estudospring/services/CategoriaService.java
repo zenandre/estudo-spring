@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import br.mp.mpce.setin.estudospring.domain.Categoria;
+import br.mp.mpce.setin.estudospring.domain.Cliente;
 import br.mp.mpce.setin.estudospring.dto.CategoriaDTO;
 import br.mp.mpce.setin.estudospring.repositories.CategoriaRepository;
 import br.mp.mpce.setin.estudospring.services.exceptions.ConstraintException;
@@ -33,8 +34,9 @@ public class CategoriaService {
 	}
 
 	public Categoria update(Categoria obj) {
-		findById(obj.getId());
-		return reporitory.save(obj);
+		Categoria categoriaToUpdate = findById(obj.getId());
+		updateData(categoriaToUpdate,obj);
+		return reporitory.save(categoriaToUpdate);
 	}
 
 	public void delete(Integer id) {
@@ -61,4 +63,8 @@ public class CategoriaService {
 	public Categoria fromDTO(CategoriaDTO obj) {
 		return new Categoria(obj.getId(),obj.getNome());
 	}
+	private void updateData(Categoria categoriaToUpdate, Categoria obj) {
+		categoriaToUpdate.setNome(obj.getNome());
+	}
+	
 }
