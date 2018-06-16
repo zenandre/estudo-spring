@@ -5,6 +5,9 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
+import br.mp.mpce.setin.estudospring.services.validation.ClienteInsert;
+
+@ClienteInsert
 public class ClienteNewDTO {
 
 	@NotEmpty(message="Nome obrigatório")
