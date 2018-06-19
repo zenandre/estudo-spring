@@ -1,6 +1,7 @@
 package br.mp.mpce.setin.estudospring.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -8,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import br.mp.mpce.setin.estudospring.domain.PagamentoComBoleto;
 import br.mp.mpce.setin.estudospring.domain.PagamentoComCartao;
 
+@Configuration
 public class JacksonConfig {
 	
 	@Bean
@@ -17,7 +19,7 @@ public class JacksonConfig {
 				objectMapper.registerSubtypes(PagamentoComCartao.class);
 				objectMapper.registerSubtypes(PagamentoComBoleto.class);
 				super.configure(objectMapper);
-			}
+			};
 		};
 		return builder;
 	}

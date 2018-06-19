@@ -11,22 +11,22 @@ import br.mp.mpce.setin.estudospring.domain.enums.EstadoPagamento;
 public class PagamentoComCartao extends Pagamento {
 	
 	private static final long serialVersionUID = 1L;
-	private String numeroDeParcelas;
+	private Integer numeroDeParcelas;
 	
 	public PagamentoComCartao() {
 		
 	}
 
-	public PagamentoComCartao(Integer id, EstadoPagamento estadoPagamento, Pedido pedido,String numeroDeParcelas) {
+	public PagamentoComCartao(Integer id, EstadoPagamento estadoPagamento, Pedido pedido,Integer numeroDeParcelas) {
 		super(id,estadoPagamento,pedido);
 		this.setNumeroDeParcelas(numeroDeParcelas);
 	}
 
-	public String getNumeroDeParcelas() {
+	public Integer getNumeroDeParcelas() {
 		return numeroDeParcelas;
 	}
 
-	public void setNumeroDeParcelas(String numeroDeParcelas) {
+	public void setNumeroDeParcelas(Integer numeroDeParcelas) {
 		this.numeroDeParcelas = numeroDeParcelas;
 	}
 	
