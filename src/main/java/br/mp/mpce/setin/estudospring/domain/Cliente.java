@@ -28,12 +28,15 @@ public class Cliente implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_id_cliente_gen")
 	@SequenceGenerator(name = "seq_id_cliente_gen", sequenceName = "seq_id_cliente")
 	private Integer id;
+	
+	@JsonIgnore
+	private String senha;
 	private String nome;
 	private String email;
 	private String cpfOuCnpj;
 	private Integer tipoCliente;
 
-	@OneToMany(mappedBy = "cliente",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
 	private List<Endereco> enderecos = new ArrayList<>();
 
 	@ElementCollection
@@ -48,13 +51,22 @@ public class Cliente implements Serializable {
 
 	}
 
-	public Cliente(Integer id, String nome, String email, String cpfOuCnpj, TipoCliente tipoCliente) {
+	public Cliente(Integer id, String nome, String email, String cpfOuCnpj, TipoCliente tipoCliente, String senha) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.cpfOuCnpj = cpfOuCnpj;
-		this.tipoCliente = (tipoCliente == null ) ? null : tipoCliente.getCod();
+		this.tipoCliente = (tipoCliente == null) ? null : tipoCliente.getCod();
+		this.senha = senha;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public Integer getId() {

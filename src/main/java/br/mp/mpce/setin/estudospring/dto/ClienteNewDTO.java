@@ -34,6 +34,19 @@ public class ClienteNewDTO {
 	
 	private Integer cidadeId;
 	
+	@NotEmpty
+	private String senha;
+	
+	
+	
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 	public ClienteNewDTO() {
 		
 	}
